@@ -1,0 +1,16 @@
+{
+  "name": "save-manager",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite build",
+    "build": "rimraf dist && npm run dev && node ./tools/release.js"
+  },
+  "devDependencies": {
+    "eslint": "^8.50.0",
+    "maginai": "^0.2.0",
+    "rimraf": "^5.0.1",
+    "vite": "^4.4.9"
+  }
+}
