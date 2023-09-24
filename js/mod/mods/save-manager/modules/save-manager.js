@@ -73,7 +73,7 @@ class SaveManager {
       header: JSON.parse(header),
       main: await fromSaveMainFormat(main),
       suspendedBackupHeader: JSON.parse(suspendedBackupHeader),
-      suspended: await fromSaveMainFormat(suspendedBackupHeader),
+      suspended: await fromSaveMainFormat(suspended),
     };
   }
 
