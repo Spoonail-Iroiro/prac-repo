@@ -4,7 +4,8 @@
     "tGameKeyboard": true,
     "tWgm": true,
     "tGameMenu": true,
-    "tGameRoutineMap": true
+    "tGameRoutineMap": true,
+    "$": true
   },
   "env": {
     "browser": true,

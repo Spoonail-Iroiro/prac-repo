@@ -1,0 +1,1 @@
+decalre var $: any;
