@@ -73,6 +73,12 @@ class SaveManager {
     await this._import(saveStr);
   }
 
+  async exportToGame(saveNo) {
+    const saveKey = tWgm.tGameSave.getSaveKey(saveNo);
+    const saveStr = await this._export()
+    localStorage[saveKey] = saveStr;
+  }
+
   async _import(saveStr) {
     const { header, main, suspended, suspendedBackupHeader } =
       tWgm.tGameSave.splitSaveData(saveStr);
