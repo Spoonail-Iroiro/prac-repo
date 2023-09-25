@@ -104,4 +104,8 @@ class SaveManager {
 
     return saveStr;
   }
+
+  async importFromFile() {
+    
+  }
 }
