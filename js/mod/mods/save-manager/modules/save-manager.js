@@ -65,10 +65,11 @@ class SaveManager {
     // セーブデータ一時領域
     this.saveData = null;
   }
-  async importFromGame(saveStr, saveNo) {
+  async importFromGame(saveNo) {
     const saveKey = tWgm.tGameSave.getSaveKey(saveNo);
-    const saveStr = localStorage[saveKey]
-    if(saveStr === undefined) throw new Error(`指定された番号のセーブデータはありません：${saveNo}`);
+    const saveStr = localStorage[saveKey];
+    if (saveStr === undefined)
+      throw new Error(`指定された番号のセーブデータはありません：${saveNo}`);
     await this._import(saveStr);
   }
 
