@@ -4,14 +4,20 @@
   "version": "0.2.0",
   "type": "module",
   "scripts": {
-    "dev": "vite build",
-    "build": "rimraf dist && npm run dev && node ./tools/release.js",
+    "dev": "npm run genversion && vite build",
+    "build": "npm run genversion && rimraf dist && npm run dev && node ./tools/release.js",
     "test": "vitest --run",
     "build:docs": "typedoc",
-    "preview:docs": "typedoc --excludeExternals"
+    "preview:docs": "typedoc --excludeExternals",
+    "genversion": "genversion --es6 ./js/mod/mods/save-manager/modules/version.js",
+    "npver": "npm version --no-commit-hooks --no-git-tag-version",
+    "bump-version:major": "npm run npver -- major && npm run genversion",
+    "bump-version:minor": "npm run npver -- minor && npm run genversion",
+    "bump-version:patch": "npm run npver -- patch && npm run genversion"
   },
   "devDependencies": {
     "eslint": "^8.50.0",
+    "genversion": "^3.1.1",
     "maginai": "^0.2.0",
     "rimraf": "^5.0.1",
     "typedoc": "^0.25.1",
