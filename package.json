@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite build",
     "build": "rimraf dist && npm run dev && node ./tools/release.js",
+    "test": "vitest --run",
     "build:docs": "typedoc",
     "preview:docs": "typedoc --excludeExternals"
   },
@@ -16,6 +17,6 @@
     "typedoc": "^0.25.1",
     "typedoc-plugin-missing-exports": "^2.1.0",
     "vite": "^4.4.9",
-    "vitest": "^0.34.5"
+    "vitest": "^0.34.6"
   }
 }
