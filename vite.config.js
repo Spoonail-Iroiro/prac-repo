@@ -10,7 +10,7 @@ export default defineConfig({
     emptyOutDir: true,
     lib: {
       entry: resolve(__dirname, 'js/mod/mods/save-manager/init.js'),
-      name: 'save-manager',
+      name: 'saveManager',
       formats: ['iife'],
     },
     rollupOptions: {
@@ -40,7 +40,7 @@ export default defineConfig({
         }
         const assets = [
           //assets
-          'setting.js',
+          // 'setting.js',
         ];
         // Copy assets
         for (let assetName of assets) {
