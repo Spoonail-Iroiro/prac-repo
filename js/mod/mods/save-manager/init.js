@@ -23,7 +23,7 @@ export class ShortcutKeyInterrupter {
     grm.setFrameAction(tWgm);
     grm.player.isDash = false;
     grm.isAction = false;
-  } // hoge
+  }
 
   /**
    * 追加キー処理のため無効化していたtGameMenu.viewSkillを有効化する
