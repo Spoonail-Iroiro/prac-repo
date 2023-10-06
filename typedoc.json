@@ -1,0 +1,24 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "./js/mod/mods/save-manager/init.js"
+  ],
+  "includeVersion": true,
+  "markedOptions": {
+    "breaks": true
+  },
+  "plugin": [
+    "typedoc-plugin-missing-exports",
+  ],
+  "logLevel": "Verbose",
+  "tsconfig": "./tsconfig.json",
+  "visibilityFilters": {
+    "protected": false,
+    "private": false,
+    "@internal": false,
+    "inherited": true,
+    "external": false,
+  },
+  // "readme": "./assets/readme.txt",
+  "out": "_docs"
+}

@@ -1,18 +1,29 @@
 import FileImporter from './file-importer.js';
 import FileExporter from './file-exporter.js';
 
+/**
+ * zip
+ * ゲームのzipDataWorkerを使用して動作する
+ */
 async function zipData(data) {
   return new Promise((resolve) => {
     tWgm.tGameSave.zipDataWorker(data, resolve);
   });
 }
 
+/**
+ * unzip
+ * ゲームのunzipDataWorkerを使用して動作する
+ */
 async function unzipData(zippedData) {
   return new Promise((resolve) => {
     tWgm.tGameSave.unzipDataWorker(zippedData, resolve);
   });
 }
 
+/**
+ * バイナリからBase64エンコードされた文字列への変換
+ */
 async function convertUint8ArrayToBase64(data) {
   return new Promise((resolve, reject) => {
     const blob = new Blob([data], { type: 'application/gzip' });
@@ -25,12 +36,18 @@ async function convertUint8ArrayToBase64(data) {
   });
 }
 
+/**
+ * データをゲームセーブのmainに使われている形式の文字列へ変換
+ */
 async function toSaveMainFormat(data) {
   const zipped = await zipData(data);
   const b64encoded = await convertUint8ArrayToBase64(zipped);
   return b64encoded;
 }
 
+/**
+ * ゲームセーブのmainに使われている形式の文字列からデータを復元
+ */
 async function fromSaveMainFormat(saveStr) {
   const b64decoded = tWgm.tGameSave.convertBase64ToUint8Array(saveStr);
   const unzipped = await unzipData(b64decoded);
@@ -75,7 +92,7 @@ class SaveManager {
 
   async exportToGame(saveNo) {
     const saveKey = tWgm.tGameSave.getSaveKey(saveNo);
-    const saveStr = await this._export()
+    const saveStr = await this._export();
     localStorage[saveKey] = saveStr;
   }
 
@@ -105,7 +122,5 @@ class SaveManager {
     return saveStr;
   }
 
-  async importFromFile() {
-    
-  }
+  async importFromFile() {}
 }

@@ -5,7 +5,10 @@ const pt = maginai.patcher;
 
 let isViewAbilityBlocked = false;
 
-class ShortcutKeyInterrupter {
+/**
+ * コマンドキー設定用クラス
+ */
+export class ShortcutKeyInterrupter {
   constructor() {
     /** @type {Record<string, Function>}*/
     this.handlers = {};
@@ -97,7 +100,7 @@ function isSaveable() {
   return !islocked && isSaveEnable;
 }
 
-function save(end) {
+export function save(end) {
   try {
     const gm = tWgm;
     if (!isSaveable()) {

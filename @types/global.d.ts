@@ -1,1 +1,1 @@
-decalre var $: any;
+declare var $: any;

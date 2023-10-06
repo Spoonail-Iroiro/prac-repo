@@ -1,3 +1,6 @@
+/**
+ * ブラウザ環境でのデータのファイル出力（ダウンロード）クラス
+ */
 class FileExporter {
   constructor() {
     this.downloadLink = document.createElement('a');
@@ -6,6 +9,11 @@ class FileExporter {
     document.body.appendChild(this.downloadLink);
   }
 
+  /**
+   * ファイル出力
+   * @param {any} data
+   * @param {string} name
+   */
   export(data, name) {
     this.downloadLink.download = name;
     const blob = new Blob([data], { type: 'text/plain' });

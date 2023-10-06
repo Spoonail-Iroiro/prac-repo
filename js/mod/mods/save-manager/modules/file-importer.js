@@ -1,3 +1,6 @@
+/**
+ * ブラウザ環境でのファイルのインポートクラス
+ */
 class FileImporter {
   constructor() {
     this.rootElement = document.createElement('div');
@@ -13,6 +16,10 @@ class FileImporter {
     // this.currentCallback = null;
   }
 
+  /**
+   * テキストファイルインポート
+   * ファイル選択ダイアログを開き、そこで選択したテキストファイルの内容を読み込んで返す
+   */
   async import_() {
     // すでにファイルが読み込み中かを入力前と後にチェック
     // 前チェック…ファイルを選択する前にエラー終了のほうが手間がないため
