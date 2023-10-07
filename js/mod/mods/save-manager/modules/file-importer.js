@@ -1,7 +1,7 @@
 /**
  * ブラウザ環境でのファイルのインポートクラス
  */
-class FileImporter {
+export class FileImporter {
   constructor() {
     this.rootElement = document.createElement('div');
     this.rootElement.className = 'none';

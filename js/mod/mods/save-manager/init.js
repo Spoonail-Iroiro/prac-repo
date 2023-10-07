@@ -9,7 +9,7 @@ let isViewAbilityBlocked = false;
 /**
  * コマンドキー設定用クラス
  */
-export class ShortcutKeyInterrupter {
+class ShortcutKeyInterrupter {
   constructor() {
     /** @type {Record<string, Function>}*/
     this.handlers = {};
@@ -101,7 +101,7 @@ function isSaveable() {
   return !islocked && isSaveEnable;
 }
 
-export function save(end) {
+function save(end) {
   try {
     const gm = tWgm;
     if (!isSaveable()) {
