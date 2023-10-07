@@ -1,3 +1,4 @@
+import { SaveManager } from './modules/save-manager';
 import maginai from 'maginai';
 
 const logger = maginai.logging.getLogger('save-manager');
@@ -163,3 +164,7 @@ const postprocess = maginai
   .catch((e) => logger.error(e));
 
 maginai.setModPostprocess(postprocess);
+
+const saveManager = new SaveManager();
+
+export default saveManager;

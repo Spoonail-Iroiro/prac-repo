@@ -1,7 +1,7 @@
 /**
  * ブラウザ環境でのデータのファイル出力（ダウンロード）クラス
  */
-class FileExporter {
+export class FileExporter {
   constructor() {
     this.downloadLink = document.createElement('a');
     this.downloadLink.href = 'javascript:void(0)';

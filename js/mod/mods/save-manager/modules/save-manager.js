@@ -1,5 +1,5 @@
-import FileImporter from './file-importer.js';
-import FileExporter from './file-exporter.js';
+import { FileImporter } from './file-importer.js';
+import { FileExporter } from './file-exporter.js';
 
 /**
  * zip
@@ -74,10 +74,10 @@ async function editSaveStr(saveStr, editFn) {
   return newSaveStr;
 }
 
-class SaveManager {
+export class SaveManager {
   constructor() {
     this.fileExporter = new FileExporter();
-    this.FileImporter = new FileImporter();
+    this.fileImporter = new FileImporter();
 
     // セーブデータ一時領域
     this.saveData = null;
@@ -96,6 +96,10 @@ class SaveManager {
     localStorage[saveKey] = saveStr;
   }
 
+  /**
+   * 文字列から一時領域へセーブデータをインポート
+   * @param {string} saveStr セーブデータ文字列
+   */
   async _import(saveStr) {
     const { header, main, suspended, suspendedBackupHeader } =
       tWgm.tGameSave.splitSaveData(saveStr);
@@ -107,6 +111,10 @@ class SaveManager {
     };
   }
 
+  /**
+   * 一時領域のセーブデータを文字列へエクスポート
+   * @returns {string} セーブデータ文字列
+   */
   async _export() {
     if (this.saveData === null)
       throw new Error('セーブデータが一時領域に読み込まれていません');
@@ -122,5 +130,19 @@ class SaveManager {
     return saveStr;
   }
 
-  async importFromFile() {}
+  /**
+   * ファイルからセーブデータをインポート
+   */
+  async importFromFile() {
+    const imported = await this.fileImporter.import_();
+    this._import(imported);
+  }
+
+  /**
+   * ファイルへセーブデータをエクスポート
+   */
+  async exportToFile() {
+    const saveStr = await this._export();
+    this.fileExporter.export(saveStr, 'tbrg_save_x.tbrgsv');
+  }
 }
