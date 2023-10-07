@@ -74,6 +74,9 @@ async function editSaveStr(saveStr, editFn) {
   return newSaveStr;
 }
 
+/**
+ * セーブデータ管理クラス
+ */
 export class SaveManager {
   constructor() {
     this.fileExporter = new FileExporter();
