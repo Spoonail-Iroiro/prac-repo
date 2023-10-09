@@ -28,7 +28,7 @@ jobs:
 
       # check if tag already exists
       # - run: git tag v${{steps.package-version.outputs.PACKAGE_VERSION}}
-      - run: git status
+      - run: git tag -l
       - run: npm ci
       - run: npm run build
       - uses: softprops/action-gh-release@v1
