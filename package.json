@@ -17,6 +17,7 @@
     "bump-version:patch": "npm run npver -- patch && npm run genversion"
   },
   "devDependencies": {
+    "@octokit/rest": "^20.0.2",
     "eslint": "^8.50.0",
     "genversion": "^3.1.1",
     "maginai": "^0.2.0",
