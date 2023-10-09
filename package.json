@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "npm run genversion && vite build",
     "build": "npm run genversion && rimraf dist && npm run dev && node ./tools/release.js",
+    "prepare": "npm run build",
     "test": "vitest --run",
     "build:docs": "typedoc",
     "preview:docs": "typedoc --excludeExternals",
