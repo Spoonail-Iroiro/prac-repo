@@ -17,15 +17,22 @@ jobs:
       - uses: actions/setup-node@v3.8.1
         with:
           node-version: 18.x
-      - uses: dudo/tag_check@v1.0.0
-        id: tag_check
-        with:
-          git_tag_prefix: v
+      # check if tag already exists
+      - run: git tag v${{steps.package-version.outputs.PACKAGE_VERSION}}
+      # - name: get-package-version
+      #   id: package-version
+      #   uses: martinbeentjes/npm-get-version-action@v1.3.1
+      - name: get-package-version
+        id: package-version
+        run: |
+          jq -e -r ".version" package.json > temp-version
+          echo "PACKAGE_VERSION="`cat temp-version` >> "$GITHUB_OUTPUT"
       - run: npm ci
       - run: npm run build
       - uses: softprops/action-gh-release@v1
         with:
-          tag_name: v${{steps.tag_check.outputs.git_tag_name}}
+          tag_name: v${{steps.package-version.outputs.PACKAGE_VERSION}}
           draft: true
+          target_commitish: master
           files: |
             ./dist/save-manager-*.zip
