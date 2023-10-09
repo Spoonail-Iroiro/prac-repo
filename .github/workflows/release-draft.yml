@@ -38,8 +38,8 @@ jobs:
             }
             try {
               const result = await github.rest.git.getRef({
-                owner: repo.owner,
-                repo: repo.repo,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
                 ref: 'tags/' + tag,
               });
               throw new Error(`Tag ${tag} already exists. Abort`);
