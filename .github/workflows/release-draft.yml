@@ -25,7 +25,7 @@ jobs:
         run: |
           jq -e -r ".version" package.json > temp-version
           echo "PACKAGE_VERSION="`cat temp-version` >> "$GITHUB_OUTPUT"
-      # check if tag already exists
+      # check if package version tag already exists, which means stable release already exists
       - uses: actions/github-script@v6
         id: check-tag
         with:
